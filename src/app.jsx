@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import $ from 'jquery';
+const $ = require('jquery');
 
 class App extends React.Component {
   constructor() {
@@ -17,7 +17,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {this.state.title}
       </div>
     )
   }
