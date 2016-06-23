@@ -1,0 +1,12 @@
+{
+  "esnext": true,
+  "-W093": true,
+  "-W079": true,
+  "globalstrict": true,
+  "globals": {
+    "require": false,
+    "console": false,
+    "module": false,
+    "__dirname": false
+  }
+}
