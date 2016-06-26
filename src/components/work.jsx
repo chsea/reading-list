@@ -22,9 +22,9 @@ export default class Work extends React.Component {
     };
 
     return (
-      <article className="work">
+      <article className={this.props.new ? 'work new' : 'work '}>
         <header>
-          <h3><a href={this.props.url}>{this.props.title}</a> [{this.props.chapters}]</h3>
+          <h3><a href={'http://archiveofourown.org/' + this.props.url} target="_blank">{this.props.title}</a> [{this.props.chapters}]</h3>
           <div className="author">by <a href={this.props.authorUrl}>{this.props.author}</a></div>
           <div className="info">{parseRating(this.props.rating)}, {this.props.words} words, {this.props.date}</div>
         </header>
