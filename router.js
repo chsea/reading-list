@@ -15,12 +15,14 @@ router.get('/', (req, res) => {
       $('li.work').each((i, el) => {
         let heading = $(el).find('h4'),
             title = heading.children().first(),
+            author = heading.children().last(),
             summary = $(el).find('blockquote.summary').html();
 
         let work = {
           title: title.text(),
           url: title.attr('href'),
-          author: heading.children().last().text(),
+          author: author.text(),
+          authorUrl: author.attr('href'),
           date: $(el).find('.datetime').text(),
           rating: $(el).find('.rating .text').text(),
           words: $(el).find('dd.words').text(),
