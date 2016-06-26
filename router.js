@@ -3,19 +3,21 @@ const request = require('request-promise'),
       cheerio = require('cheerio'),
       router = require('express').Router();
 
-let options = {
-  url: 'http://archiveofourown.org/works?tag_id=Aaron+Dingle*s*Robert+Sugden',
+const options = {
+  url: 'http://archiveofourown.org/works?tag_id=',
   transform: body => cheerio.load(body)
 };
 
 router.get('/', (req, res) => {
+  let tag = 'Aaron+Dingle*s*Robert+Sugden';
+  options.url += `${tag}&page=${req.query.page || 1}`;
   request(options)
     .then($ => {
       let works = [];
       $('li.work').each((i, el) => {
         let heading = $(el).find('h4'),
             title = heading.children().first(),
-            author = heading.children().last(),
+            author = heading.children().eq(1),
             summary = $(el).find('blockquote.summary').html();
 
         let work = {
