@@ -9,10 +9,12 @@ export default class Works extends React.Component {
     super(props);
   }
   render() {
+    let showTitle = () => this.props.works.length ? <h2>Works</h2> : '';
     return (
-      <div>
+      <section>
+        {showTitle()}
         {this.props.works.map((work, i) => <Work key={i} {...work}/>)}
-      </div>
+      </section>
     )
   }
 }

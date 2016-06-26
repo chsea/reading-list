@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Works from './components/works.jsx';
+require('./less/main.less');
 const $ = require('jquery');
 
 export default class App extends React.Component {
@@ -20,10 +21,16 @@ export default class App extends React.Component {
   }
   render() {
     return (
-      <div>
-        <a href="#" onClick={this.handleClick}>robert/aaron</a>
+      <section className="content">
+        <header className="title">
+          <h1>Reading List</h1>
+        </header>
+        <nav>
+          <h2>Filters</h2>
+          <a href="#" onClick={this.handleClick}>robert/aaron</a>
+        </nav>
         <Works works={this.state.works} name={this.state.name} />
-      </div>
+      </section>
     )
   }
 }
