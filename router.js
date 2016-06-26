@@ -14,7 +14,8 @@ router.get('/', (req, res) => {
       let works = [];
       $('li.work').each((i, el) => {
         let heading = $(el).find('h4'),
-            title = heading.children().first();
+            title = heading.children().first(),
+            summary = $(el).find('blockquote.summary').html();
 
         let work = {
           title: title.text(),
@@ -25,7 +26,7 @@ router.get('/', (req, res) => {
           words: $(el).find('dd.words').text(),
           chapters: $(el).find('dd.chapters').text(),
           kudos: $(el).find('dd.kudos').text(),
-          summary: $(el).find('.summary').html().trim()
+          summary: summary ? summary.trim() : ''
         };
         works.push(work);
       });

@@ -2,10 +2,15 @@
 
 import React from 'react';
 
-class Work extends React.component {
+export default class Work extends React.Component {
   render() {
-    return <h1>hi</h1>
+    return (
+      <div>
+        <div>{this.props.date}</div>
+        <div><a href={this.props.url}>{this.props.title}</a></div>
+        <div>by {this.props.author}</div>
+        <div dangerouslySetInnerHTML={{__html: this.props.summary}} />
+      </div>
+    );
   }
 }
-
-export default Work;

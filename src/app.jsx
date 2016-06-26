@@ -1,25 +1,29 @@
 'use strict';
 
 import React from 'react';
+import Works from './components/works.jsx';
 const $ = require('jquery');
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      title: ''
+      works: [],
+      name: "hi"
     };
+    this.handleClick = this.handleClick.bind(this);
   }
-  componentDidMount() {
+  handleClick() {
+    this.setState({name: "bye"});
     $.get('/api')
-      .done(data => this.setState({title: data.works[0].title}))
+      .done(data => this.setState({works: data.works}));
   }
   render() {
     return (
       <div>
+        <a href="#" onClick={this.handleClick}>robert/aaron</a>
+        <Works works={this.state.works} name={this.state.name} />
       </div>
     )
   }
 }
-
-export default App;

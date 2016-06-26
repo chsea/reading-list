@@ -4,16 +4,15 @@ import React from 'react';
 
 import Work from './work.jsx';
 
-class Works extends React.component {
-  constructor() {
-    super();
-    this.state {
-      works: []
-    }
+export default class Works extends React.Component {
+  constructor(props) {
+    super(props);
   }
   render() {
-    {this.state.works.map(work => <Work />)}
+    return (
+      <div>
+        {this.props.works.map((work, i) => <Work key={i} {...work}/>)}
+      </div>
+    )
   }
 }
-
-export default Works;
